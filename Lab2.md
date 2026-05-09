@@ -1,8 +1,34 @@
 # Лабораторная работа №2: Обработка HTTP запросов
+<a id="top"></a>
+
+<p align="right"><a href="#top">↑ наверх</a></p>
+
+---
+
+## 📌 Содержание
+
+| | Раздел |
+|:---:|:---|
+| 📋 | [Описание](#-описание) |
+| 🔧 | [1. Создание директории проекта](#-1-создание-директории-проекта-ask_pupkin) |
+| 🎯 | [2. Создание Django проекта и приложения](#-2-создание-django-проекта-и-приложения) |
+| 📨 | [3. Отображение данных (Views)](#-3-отображение-данных-views) |
+| 🌐 | [4. Маршрутизация URL](#-4-маршрутизация-url) |
+| 🔄 | [5. Функция пагинации](#-5-функция-пагинации) |
+| 💻 | [6. AJAX обработчики (API Endpoints)](#-6-ajax-обработчики-api-endpoints) |
+| 📊 | [Итоговая таблица HTTP обработчиков](#-итоговая-таблица-http-обработчиков) |
+| 🔐 | [Защита запросов](#-защита-запросов) |
+| ✨ | [Особенности реализации](#-особенности-реализации) |
+
+<p align="right"><a href="#top">↑ наверх</a></p>
+
+---
 
 ## 📋 Описание
 
 Реализована полная обработка HTTP запросов веб-приложения SegmentationFault с использованием Django фреймворка. Приложение обрабатывает запросы всех основных страниц, управляет маршрутизацией URL, реализует пагинацию и AJAX функционал.
+
+<p align="right"><a href="#top">↑ наверх</a></p>
 
 ---
 
@@ -60,6 +86,8 @@ django-admin startproject ask_pupkin .
 python manage.py startapp app
 ```
 
+<p align="right"><a href="#top">↑ наверх</a></p>
+
 ---
 
 ## 🎯 2. Создание Django проекта и приложения
@@ -109,6 +137,8 @@ DATABASES = {
     }
 }
 ```
+
+<p align="right"><a href="#top">↑ наверх</a></p>
 
 ---
 
@@ -464,6 +494,8 @@ def readSettings(request):
     return render(request, 'settings.html', {'form': form})
 ```
 
+<p align="right"><a href="#top">↑ наверх</a></p>
+
 ---
 
 ## 🌐 4. Маршрутизация URL
@@ -513,6 +545,8 @@ urlpatterns = [
 | `/ajax/vote/` | POST | `updateLike` | API для лайков/дизлайков |
 | `/ajax/correct/` | POST | `updateCorrect` | API для отметки правильного ответа |
 | `/ajax/search/` | GET | `searchItem` | API для поиска |
+
+<p align="right"><a href="#top">↑ наверх</a></p>
 
 ---
 
@@ -577,6 +611,8 @@ page.has_next()       # Есть ли следующая страница
 page.previous_page_number()  # Номер предыдущей страницы
 page.next_page_number()      # Номер следующей страницы
 ```
+
+<p align="right"><a href="#top">↑ наверх</a></p>
 
 ---
 
@@ -782,6 +818,8 @@ def searchItem(request):
     return JsonResponse({'results': data})
 ```
 
+<p align="right"><a href="#top">↑ наверх</a></p>
+
 ---
 
 ## 📊 Итоговая таблица HTTP обработчиков
@@ -800,6 +838,8 @@ def searchItem(request):
 | `/ajax/vote/` | POST | ✓ | `updateLike` | Лайки/дизлайки |
 | `/ajax/correct/` | POST | ✓ | `updateCorrect` | Отметка ответа |
 | `/ajax/search/` | GET | - | `searchItem` | Поиск |
+
+<p align="right"><a href="#top">↑ наверх</a></p>
 
 ---
 
@@ -825,6 +865,8 @@ def updateCorrect(request):
     ...
 ```
 
+<p align="right"><a href="#top">↑ наверх</a></p>
+
 ---
 
 ## ✨ Особенности реализации
@@ -837,6 +879,9 @@ def updateCorrect(request):
 ✅ **Ограничение доступа** - проверка прав доступа и авторизации  
 ✅ **Обработка ошибок** - JsonResponse с соответствующими статусами  
 ✅ **Пагинация** - удобная навигация по большим спискам
+
+
+<p align="right"><a href="#top">↑ наверх</a></p>
 
 ---
 

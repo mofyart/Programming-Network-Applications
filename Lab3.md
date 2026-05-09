@@ -1,10 +1,37 @@
 # Лабораторная работа №3: Проектирование модели данных
+<a id="top"></a>
+
+<p align="right"><a href="#top">↑ наверх</a></p>
+
+---
+
+## 📌 Содержание
+
+| | Раздел |
+|:---:|:---|
+| 📋 | [Описание](#-описание) |
+| 🗄️ | [1. Проектирование модели](#1-️-проектирование-модели) |
+| 🔧 | [2. Manager и QuerySet методы](#2--manager-и-queryset-методы) |
+| 📥 | [3. Наполнение данными](#3--наполнение-данными) |
+| 📊 | [4. Требования к объему данных](#4--требования-к-объему-данных) |
+| 🎯 | [5. Отображение данных](#5--отображение-данных) |
+| 🔐 | [6. Использование СУБД](#6--использование-субд) |
+| 📝 | [7. Валидация данных через Django Forms](#7--валидация-данных-через-django-forms) |
+| 📊 | [Итоговая таблица моделей](#-итоговая-таблица-моделей) |
+| ✨ | [Особенности реализации](#-особенности-реализации) |
+| 🚀 | [Использованные технологии](#-использованные-технологии) |
+
+<p align="right"><a href="#top">↑ наверх</a></p>
+
+---
 
 ## 📋 Описание
 
 Реализовано проектирование модели базы данных для веб-приложения SegmentationFault. Создана полная архитектура данных с использованием Django ORM, включая связи между таблицами, custom manager'ы для оптимизации запросов и систему валидации данных.
 
 **Цель:** Проектирование модели базы данных, наполнение её тестовыми данными и отображение этих данных на сайте.
+
+<p align="right"><a href="#top">↑ наверх</a></p>
 
 ---
 
@@ -183,6 +210,8 @@ User (Django built-in)
       └─ Like (ForeignKey, related_name='likes')
 ```
 
+<p align="right"><a href="#top">↑ наверх</a></p>
+
 ---
 
 ## 2. 🔧 Manager и QuerySet методы
@@ -324,6 +353,8 @@ class ManagerProfile(models.Manager):
 
 **Использование:** `Profile.objects.best()` - получить лучших участников для сайдбара
 
+<p align="right"><a href="#top">↑ наверх</a></p>
+
 ---
 
 ## 3. 📥 Наполнение данными
@@ -458,6 +489,8 @@ for _ in range(total_likes):
     )
 ```
 
+<p align="right"><a href="#top">↑ наверх</a></p>
+
 ---
 
 ## 4. 📊 Требования к объему данных
@@ -490,6 +523,8 @@ python manage.py fill_db [ratio]
 python manage.py fill_db 10000
 ```
 
+<p align="right"><a href="#top">↑ наверх</a></p>
+
 ---
 
 ## 5. 🎯 Отображение данных
@@ -506,6 +541,8 @@ python manage.py fill_db 10000
 Все views используют функцию пагинации, созданную на предыдущем занятии.
 
 **Особенность:** В коде view не должно быть дублирующегося кода. Использовать функцию пагинации созданную на предыдущем занятии.
+
+<p align="right"><a href="#top">↑ наверх</a></p>
 
 ---
 
@@ -562,6 +599,8 @@ pip install psycopg2-binary
 ```bash
 pip install mysqlclient
 ```
+
+<p align="right"><a href="#top">↑ наверх</a></p>
 
 ---
 
@@ -688,6 +727,8 @@ class AnswerForm(forms.Form):
         return text
 ```
 
+<p align="right"><a href="#top">↑ наверх</a></p>
+
 ---
 
 ## 📊 Итоговая таблица моделей
@@ -700,6 +741,8 @@ class AnswerForm(forms.Form):
 | Question | title, text, user, tags, created_at | FK Profile, M2M Tag, GenericRelation | Custom manager, QuerySet |
 | Answer | text, user, question, is_correct | FK Profile, FK Question, GenericRelation | Custom manager, QuerySet |
 | Like | user, content_type, object_id | FK Profile, GenericFK | Уникальность на БД уровне |
+
+<p align="right"><a href="#top">↑ наверх</a></p>
 
 ---
 
@@ -714,6 +757,8 @@ class AnswerForm(forms.Form):
 ✅ **Внешняя СУБД** - использование PostgreSQL/MySQL вместо SQLite  
 ✅ **Защита от дубликатов** - UniqueConstraint в модели Like
 
+<p align="right"><a href="#top">↑ наверх</a></p>
+
 ---
 
 ## 🚀 Использованные технологии
@@ -723,6 +768,9 @@ class AnswerForm(forms.Form):
 - **Генерация данных**: Faker library
 - **Валидация**: Django Forms
 - **Оптимизация**: prefetch_related, select_related, annotate, bulk_create
+
+
+<p align="right"><a href="#top">↑ наверх</a></p>
 
 ---
 
